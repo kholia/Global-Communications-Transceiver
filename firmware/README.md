@@ -1,32 +1,6 @@
 Build Process:
 
-```
-$ pwd
-pico-sdk
-
-$ git checkout develop; git checkout -f
-```
-
-[Optional] Apply the following patch:
-
-```
-$ git diff
-diff --git a/src/boards/include/boards/waveshare_rp2040_zero.h b/src/boards/include/boards/waveshare_rp2040_zero.h
-index 281b4dc..858f930 100644
---- a/src/boards/include/boards/waveshare_rp2040_zero.h
-+++ b/src/boards/include/boards/waveshare_rp2040_zero.h
-@@ -16,6 +16,10 @@
- // For board detection
- #define WAVESHARE_RP2040_ZERO
-
-+#ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
-+#define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
-+#endif
-+
- // --- UART ---
- #ifndef PICO_DEFAULT_UART
- #define PICO_DEFAULT_UART 0
-```
+NB: https://github.com/hathach/tinyusb/pull/3181
 
 ```
 export PICO_SDK_PATH=$HOME/repos/pico-sdk
@@ -35,7 +9,7 @@ export PICO_BOARD=waveshare_rp2040_zero  # note
 
 cmake .
 
-cmake -DCMAKE_BUILD_TYPE=Debug .  # for debugging
+cmake -DCMAKE_BUILD_TYPE=Release .
 
 make -j8
 ```

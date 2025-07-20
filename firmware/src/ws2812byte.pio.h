@@ -14,6 +14,7 @@
 
 #define ws2812byte_wrap_target 0
 #define ws2812byte_wrap 3
+#define ws2812byte_pio_version 0
 
 #define ws2812byte_T1 2
 #define ws2812byte_T2 5
@@ -21,10 +22,10 @@
 
 static const uint16_t ws2812byte_program_instructions[] = {
             //     .wrap_target
-    0x6221, //  0: out    x, 1            side 0 [2] 
-    0x1123, //  1: jmp    !x, 3           side 1 [1] 
-    0x1400, //  2: jmp    0               side 1 [4] 
-    0xa442, //  3: nop                    side 0 [4] 
+    0x6221, //  0: out    x, 1            side 0 [2]
+    0x1123, //  1: jmp    !x, 3           side 1 [1]
+    0x1400, //  2: jmp    0               side 1 [4]
+    0xa442, //  3: nop                    side 0 [4]
             //     .wrap
 };
 
@@ -33,6 +34,10 @@ static const struct pio_program ws2812byte_program = {
     .instructions = ws2812byte_program_instructions,
     .length = 4,
     .origin = -1,
+    .pio_version = ws2812byte_pio_version,
+#if PICO_PIO_VERSION > 0
+    .used_gpio_ranges = 0x0
+#endif
 };
 
 static inline pio_sm_config ws2812byte_program_get_default_config(uint offset) {

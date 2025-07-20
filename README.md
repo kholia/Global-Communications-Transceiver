@@ -162,6 +162,8 @@ The transceiver was tested with the following power sources.
 - Use a Common-Mode-Choke (attached between the rig, and the antenna) for
   safety against `return/back RF`.
 
+- DDX works seamlessly with https://play.google.com/store/apps/details?id=com.bunzee.ft8radio app!
+
 ## Resources
 
 - The `Global Communications Transceiver` project comes from our DDX family of
