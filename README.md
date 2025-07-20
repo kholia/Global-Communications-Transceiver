@@ -151,7 +151,13 @@ The transceiver was tested with the following power sources.
 
 - RUIDENG DPS5020 power supply module (@13v) powered by MEAN WELL / Mornsun SMPS
 
-## Safety Tips
+## Tips and Hints
+
+- Do NOT use the internal LPF + BPF filters. Just use https://github.com/kholia/DDX/tree/master/RX-TX-BPF-2025-v2 externally.
+
+- IRF510 needs to be insulated from the heat sink.
+
+- You can ignore the `External ATU jack` stuff.
 
 - Use a Common-Mode-Choke (attached between the rig, and the antenna) for
   safety against `return/back RF`.
